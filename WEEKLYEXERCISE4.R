@@ -18,3 +18,9 @@ olympics2 = olympics %>%
   mutate(total.medals = gold + silver + bronze)
 
 view(olympics2) # the column is present and accurate.
+
+golds_per_country = olympics2 %>%
+  group_by(country) %>%
+  summarise(gold = sum(gold, na.rm = T))
+
+view(golds_per_country) # looks good.
