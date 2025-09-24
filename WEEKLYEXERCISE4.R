@@ -13,3 +13,12 @@ largest_delegations = olympics %>%
 
 str(largest_delegations) #it's a tibble
 view(largest_delegations)
+
+library(ggplot2)
+olympics %>%
+  filter(country %in% c(
+    "United States", "France", "Germany", "Russia", "China")) %>%
+  select(country, year, gold) %>%
+  ggplot(aes(x = year, y = gold, colour = country)) +
+  geom_line() +
+  geom_point()
