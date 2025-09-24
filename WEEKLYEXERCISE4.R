@@ -21,6 +21,13 @@ view(olympics2) # the column is present and accurate.
 
 golds_per_country = olympics2 %>%
   group_by(country) %>%
-  summarise(gold = sum(gold, na.rm = T))
+  summarise(gold = sum(gold, na.rm = T)) # NA's removed.
 
 view(golds_per_country) # looks good.
+
+medals_per_year = olympics2 %>%
+  select(year, total.medals) %>%
+  group_by(year) %>%
+  summarise(medals = sum(total.medals, na.rm = T))
+
+view(medals_per_year) # looks good.
